@@ -1,0 +1,190 @@
+{% extends 'pages/users/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Header Start -->
+    <div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'home' %}">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- About Start -->
+    {% for s in success %}
+    <div class="container-fluid overflow-hidden py-5 px-lg-0">
+        <div class="container  py-5 px-lg-0">
+            <div class="row g-5 mx-lg-0">
+                <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="{{s.image.url}}" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="text-secondary text-uppercase mb-3">About Us</h6>
+                    <h1 class="mb-5">{{s.title}}</h1>
+                    <p class="mb-5" style="text-align:justify;">{{s.description|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- About End -->
+
+        <!-- Mission & Vision Start -->
+    <div class="container-xxl py-5" style="background: url('{% static 'assets/img/rough4.png' %}') no-repeat center center; background-size: cover;">
+        <div class="container py-5">
+            
+            <!-- Section Title -->
+             {% for mv in misvis %}
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+              <h1 class="mb-3">{{mv.title}}</h1>
+              <p style="max-width: 800px; margin: 0 auto;">
+                {{mv.description|safe}}
+              </p>
+            </div>
+            {% endfor %}
+            <div class="row g-4">
+            
+            <!-- Mission Card -->
+             {% for m in mission %}
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="d-flex p-4 bg-light rounded h-100">
+                <i class="fa fa-bullseye text-primary fa-2x flex-shrink-0 me-3"></i>
+                <div>
+                    <h5 class="mb-2" style="text-transform: uppercase;">{{m.title}}</h5>
+                    <p class="mb-0">
+                    {{m.description|safe}}
+                    </p>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Vision Card -->
+             {% for v in vision %}
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="d-flex p-4 bg-light rounded h-100">
+                <i class="fa fa-eye text-primary fa-2x flex-shrink-0 me-3"></i>
+                <div>
+                    <h5 class="mb-2" style="text-transform: uppercase;">{{v.title}}</h5>
+                    <p class="mb-0">
+                    {{v.description|safe}}
+                    </p>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+        <!-- Mission & Vision End -->
+
+            <!-- Affiliation Start -->
+          
+            <div class="container-xxl py-5">
+                <div class="container py-5">
+                    {% for a in afill %}
+                    <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-3">{{a.title}}</h1>
+                        <p style="text-align:justify; max-width: 800px; margin: 0 auto;">
+                            {{a.description|safe}}
+                        </p>
+                    </div>
+                    {% endfor %}
+
+                    <div class="row g-4">
+                    {% for o in org %}
+                    <div class="col-md-4">
+                        <div class="{{ o.bg_class }} p-4 h-100 rounded wow fadeIn" data-wow-delay="0.7s">
+                        <i class="fa fa-star fa-2x text-white mb-3"></i>
+                        <h4 class="text-white mb-2">{{o.title}}</h4>
+                        <div class="text-white mb-0">
+                            {{o.description|safe}}
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                    </div>
+                </div>
+        </div>
+
+    <!-- Affiliation End -->
+
+            <!-- Core Values Start -->
+            <div class="container-xxl py-5">
+            <div class="container py-5">
+                <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-3">Our Values</h1>
+                <p style="max-width: 800px; margin: 0 auto;">
+                    Our core values define who we are, how we work, and the standards we uphold in delivering
+                    exceptional services to our clients and partners.
+                </p>
+                </div>
+
+            <div class="row g-4">
+                <!-- Customer Focus -->
+                 {% for core in cores %}
+                <div class="col-md-6">
+                    <div class="d-flex p-4 bg-light rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
+                    <i class="fa {{core.icon_class}} text-primary fa-2x flex-shrink-0"></i>
+                    <div class="ms-3">
+                        <h5 style="text-transform:uppercase;">{{core.title}}</h5>
+                        <p class="mb-0">
+                        {{core.description|safe}}
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                 {% endfor %}
+              </div>
+              
+            </div>
+            </div>
+            <!-- Core Values End -->
+
+
+    <!-- team Start -->
+    {% for t in team %}
+    <div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-secondary text-uppercase">Our Team</h6>
+            <h1 class="mb-5 text-capitalize">{{ t.title }}</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item p-4">
+                    <!-- Image wrapper -->
+                    <div class="image-container mb-4">
+                        <img class="cover-image" src="{{ t.image.url }}" alt="image">
+                    </div>
+                    
+                    <p style="text-align: justify; font-size: 18px;">
+                        {{ t.description|safe }}
+                    </p>
+                    
+                    <a class="btn-slide mt-2" href="">
+                        <i class="fa fa-arrow-right"></i><span>Read More</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+    <!-- team End -->
+
+{% endblock %}

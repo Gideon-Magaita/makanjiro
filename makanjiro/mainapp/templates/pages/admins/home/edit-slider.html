@@ -1,0 +1,38 @@
+{% extends "pages/admins/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-6 col-sm-3">
+        <!--card-->
+        <div class="card">
+           <!--messages-->
+          {% include 'message.html' %}
+          <!--messages-->
+            <div class="card-header">
+                <h3>Edit Sliders</h3>
+            </div>
+            <div class="card-body">
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'sliders' %}" class="btn btn-danger form-control">close</a>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-info form-control">Update Details</button>
+                    </div>
+                    </div>
+                </form>
+            </div>   
+        </div>
+        <!--card end-->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

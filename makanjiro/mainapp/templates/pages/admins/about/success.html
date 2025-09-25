@@ -1,0 +1,88 @@
+{% extends "pages/admins/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-6 col-sm-3">
+        <!--card-->
+        <div class="card">
+           <!--messages-->
+          {% include 'message.html' %}
+          <!--messages-->
+            <div class="card-header">
+                <h3>Success Story</h3>
+            </div>
+            <div class="card-body">
+                <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#staticBackdrop">
+               Add Success Story
+               </button>
+       
+               <!-- Modal -->
+               <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-lg modal-dialog-centered">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="staticBackdropLabel">Reason form</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body d-flex justify-content-center align-items-center">
+                       <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                         <div class="row">
+                           <div class="col-md-6">
+                             <button type="button" class="btn btn-secondary form-control" data-dismiss="modal">Close</button>
+                           </div>
+                           <div class="col-md-6">
+                             <button type="submit" class="btn btn-info form-control">Save Details</button>
+                           </div>
+                         </div>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+              <!--table-->
+              <div class="table-responsive animate__animated animate__fadeIn">
+                <table id="mytable" class="table table-responsive table-bordered table-striped w-auto">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Image</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for s in succ %}
+                      <tr> 
+                        <td>{{ s.title }}</td>
+                        <td>{{ s.description|safe }}</td>
+                        <td>
+                          <img src="{{ s.image.url }}" alt="image" width="200px" height="150px">
+                        </td>
+                        <td>{{ s.date }}</td>
+                        <td class="td d-flex">
+                          <a onclick="return confirm('Are you you want to delete?')" class="btn btn-danger" href="{% url 'delete_success' s.id %}">Delete</a>
+                          <a class="btn btn-success ml-3" href="{% url 'edit_success' s.id %}">Edit</a>
+                        </td>  
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!--table-->
+            </div>
+                
+        </div>
+        <!--card end-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

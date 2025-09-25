@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+    {% load static %}
+        <a href="{% url 'home' %}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+            <!-- Logo -->
+            <img src="{% static 'assets/img/logo-dark.png' %}" alt="Logo" 
+                class="me-2" style="height:65px;">
+            <!-- Brand Name -->
+            <h3 class="mb-0 text-white">Makanjiro</h3>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{% url 'home' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+                <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/services/' %}active{% endif %}">Services</a>
+                <a href="{% url 'project' %}" class="nav-item nav-link {% if request.path == '/projects/' %}active{% endif %}">Projects</a>
+                <a href="{% url 'shipment' %}" class="nav-item nav-link {% if request.path == '/shipment/' %}active{% endif %}">Shipment</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+            </div>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-phone text-primary me-3"></i>+255657894435</h4>
+        </div>
+    </nav>

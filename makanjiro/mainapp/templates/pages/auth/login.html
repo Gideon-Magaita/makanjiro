@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="ALPHAVILAH CMS Login" />
+    <meta name="author" content="ALPHAVILAH" />
+    <title>MAKANJIRO - CMS Login</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'assets/auth/images/logo-dark.png' %}" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="{% static 'assets/auth/css/styles.css' %}" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('{% static "assets/auth/images/bg.jpg" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .register-btn {
+            background: #024576 !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        .register-btn:hover {
+            background: #013258 !important;
+            transform: translateY(-2px);
+        }
+        .ssms-title {
+            font-weight: bolder !important;
+            color: #024576;
+        }
+        .user-card {
+            margin-top:30%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: none !important;
+        }
+        .form-control:focus {
+            border-color: #024576;
+            box-shadow: 0 0 0 0.25rem rgba(2, 69, 118, 0.25);
+        }
+        .card-header {
+            background-color: white;
+            border-bottom: 2px solid #024576;
+        }
+        @media (max-width: 768px) {
+            .user-card {
+                margin-top:28%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-md-7">
+                            <center>
+                                {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="max-width: 400px;">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                            </center>
+                            <div class="card shadow-lg border-0 rounded-lg user-card">
+                                <div class="card-header">
+                                    <h3 class="text-center ssms-title mb-2">MAKANJIRO</h3>
+                                    <h4 class="text-center text-dark font-weight-light my-4" style="font-weight:bold;">CMS LOGIN</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" id="loginForm">
+                                        {% csrf_token %}
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputUsername" type="text" name="username" placeholder="Enter username" required />
+                                            <label for="inputUsername">Username</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Enter password" required />
+                                            <label for="inputPassword">Password</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" id="inputRememberPassword" type="checkbox" name="remember_me" />
+                                            <label class="form-check-label" for="inputRememberPassword">Remember me</label>
+                                        </div>
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn register-btn btn-block py-2">
+                                                <i class="fas fa-sign-in-alt me-2"></i> Login
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <small class="text-muted">
+                                        &copy; {% now "Y" %} MAKANJIRO. All rights reserved.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/auth/assets/js/scripts.js' %}"></script>
+    
+    <!-- Optional Charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/auth/assets/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'assets/auth/assets/demo/chart-bar-demo.js' %}"></script>
+    
+    <!-- DataTables -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/auth/assets/js/datatables-simple-demo.js' %}"></script>
+
+    <script>
+        // Add CSRF token to AJAX requests if needed
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        
+        // Form validation
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const username = document.getElementById('inputUsername').value.trim();
+            const password = document.getElementById('inputPassword').value.trim();
+            
+            if (!username || !password) {
+                e.preventDefault();
+                alert('Please fill in all required fields');
+            }
+        });
+    </script>
+</body>
+</html>

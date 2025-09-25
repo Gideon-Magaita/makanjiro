@@ -1,0 +1,116 @@
+<div class="scrollbar-inner sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item active">
+                <a href="{% url 'admin_home' %}">
+                    <i class="la la-dashboard"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="la la-table"></i>
+                    <p>Home Pages</p>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="homePagesDropdown">
+                    <li>
+                        <a class="dropdown-item" href="{% url 'sliders' %}">Sliders</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'story' %}">Our story</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'choosing' %}">Choosing Us</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'reason' %}">Reasons for choosing</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'special' %}">What makes special</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'special_points' %}">special points</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'flexibility' %}">Flexibility in logistics</a>
+                    </li>
+                </ul>
+            </li>
+
+        <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="la la-table"></i>
+                    <p>About</p>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="homePagesDropdown">
+                    <li>
+                        <a class="dropdown-item" href="{% url 'success' %}">Success Story</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'mission_vision' %}">Mission and Vision</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'mission' %}">Mission</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'vision' %}">Vision</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'affiliation' %}">Affiliation</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'affiliation_org' %}">Affiliation organization</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'team' %}">
+                <i class="la la-cogs"></i>
+                <p>Team</p>
+            </a>
+        </li>
+            <li class="nav-item">
+            <a href="{% url 'values' %}">
+                <i class="la la-cogs"></i>
+                <p>Core Values</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'service_page' %}">
+                <i class="la la-cogs"></i>  <!-- or la la-concierge-bell -->
+                <p>Services</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'project_page' %}">
+                <i class="la la-globe"></i>  <!-- or la la-lightbulb -->
+                <p>Projects</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#">
+                <i class="la la-truck"></i>  <!-- or la la-truck -->
+                <p>Shipment</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'faqs_page' %}">
+                <i class="la la-question-circle"></i>  <!-- Perfect for FAQs -->
+                <p>Faqs</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'contact_page' %}">
+                <i class="la la-envelope"></i>  <!-- or la la-envelope -->
+                <p>Contact</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'quote' %}">
+                <i class="la la-envelope"></i>  <!-- or la la-envelope -->
+                <p>Price Quote</p>
+            </a>
+        </li>
+        </ul>
+    </div>
