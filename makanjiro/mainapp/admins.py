@@ -1173,7 +1173,8 @@ def shipment(request):
     return render(request,'pages/admins/shipment.html',context)
 
 
-
+@login_required(login_url='login_user')
+@admin_only
 def edit_shipment(request,id):
     ship = Shipment.objects.get(id=id)
     if request.method == 'POST':
@@ -1193,7 +1194,8 @@ def edit_shipment(request,id):
 
 
 
-
+@login_required(login_url='login_user')
+@admin_only
 def delete_shipment(request,id):
     ship = Shipment.objects.get(id=id)
     if ship:
