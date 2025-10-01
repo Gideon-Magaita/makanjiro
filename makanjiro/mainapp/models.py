@@ -194,6 +194,18 @@ class Contact(models.Model):
         return self.name
 
 
+class Shipment(models.Model):
+    heading = models.CharField(max_length=200)
+    sub_heading = RichTextField()
+    title = models.CharField(max_length=200)
+    description = RichTextField()
+    image = models.ImageField(max_length=200,upload_to='images/')
+
+    def __str__(self):
+        return self.heading
+
+
+
 #Models to count the number of visitors
 class Visitor(models.Model):
     ip_address = models.GenericIPAddressField()
@@ -201,3 +213,4 @@ class Visitor(models.Model):
 
     def __str__(self):
         return self.ip_address
+

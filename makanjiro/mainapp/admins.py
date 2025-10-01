@@ -1150,3 +1150,55 @@ def delete_quote(request,id):
     else:
         messages.error(request,'Something went wrong!')
     return redirect('quote')
+
+
+@login_required(login_url='login_user')
+@admin_only
+def shipment(request):
+    ship = Shipment.objects.all()
+    if request.method == 'POST':
+        form = ShipmentForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data added successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('shipment')
+    else:
+        form = ShipmentForm()
+        context={
+            'form':form,
+            'ship':ship
+        }
+    return render(request,'pages/admins/shipment.html',context)
+
+
+
+def edit_shipment(request,id):
+    ship = Shipment.objects.get(id=id)
+    if request.method == 'POST':
+        form = ShipmentForm(request.POST or None,request.FILES or None,instance=ship)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data updated successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('shipment')
+    else:
+        form = ShipmentForm(instance=ship)
+        context={
+            'form':form,
+        }
+    return render(request,'pages/admins/edit-shipment.html',context)
+
+
+
+
+def delete_shipment(request,id):
+    ship = Shipment.objects.get(id=id)
+    if ship:
+        ship.delete()
+        messages.success(request,'Data deleted!')
+    else:
+        messages.error(request,'Something went wrong!')
+    return redirect('shipment')

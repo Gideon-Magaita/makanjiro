@@ -235,3 +235,18 @@ class ProjectForm(forms.ModelForm):
             'icon_class':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter icon name','required':'required'}),
             'description':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
         }
+    
+
+
+class ShipmentForm(forms.ModelForm):
+    class Meta:
+        model = Shipment
+        fields=['heading','sub_heading','title','description','image']
+
+        widgets={
+            'heading':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
+            'sub_heading':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
+            'title':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
+            'description':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
+            'image':forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }

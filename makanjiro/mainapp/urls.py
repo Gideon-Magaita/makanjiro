@@ -14,9 +14,9 @@ urlpatterns = [
     path('about/',views.about,name='about'),
     path('services/',views.service,name='service'),
     path('projects/',views.projects,name='project'),
-    path('shipment/',views.shipment,name='shipment'),
     path('contact/',views.contact,name='contact'),
     path('detail_service/<int:id>',views.detail_service,name='detail_service'),
+    path('shipment_view',views.shipment_view,name='shipment_view'),
 
     #admin urls
     path('admin_home',admins.admin_home,name='admin_home'),
@@ -116,6 +116,10 @@ urlpatterns = [
     path('project_page',admins.project_page,name='project_page'),
     path('edit_project/<int:id>',admins.edit_project,name='edit_project'),
     path('delete_project/<int:id>',admins.delete_project,name='delete_project'),
+
+    path('shipment',admins.shipment,name='shipment'),
+    path('edit_shipment/<int:id>',admins.edit_shipment,name='edit_shipment'),
+    path('delete_shipment/<int:id>',admins.delete_shipment,name='delete_shipment'),
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

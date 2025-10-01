@@ -127,8 +127,16 @@ def projects(request):
     return render(request,'pages/users/projects.html',context)
 
 
-def shipment(request):
-    return render(request,'pages/users/shipment.html')
+
+def shipment_view(request):
+    # Assuming you only have one general heading/subheading entry
+    heading_section = Shipment.objects.first()
+    services = Shipment.objects.all()
+    return render(request, 'pages/users/shipment.html', {
+        'heading_section': heading_section,
+        'services': services
+    })
+
 
 
 
@@ -146,6 +154,9 @@ def contact(request):
     context = {
     }
     return render(request,'pages/users/contact.html',context)
+
+
+
 
 
 #Custome error page

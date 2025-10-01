@@ -17,63 +17,33 @@
 
 
 <!-- Shipment Intro Start -->
-<div class="container-xxl py-5" style="background: linear-gradient(135deg, #cddff7, #f3dfdf);border-radius:15px;">
+<div class="container-xxl py-5" 
+     style="background: linear-gradient(135deg, #cddff7, #f3dfdf); border-radius:15px;">
     <div class="container py-5">
+
+        <!-- Heading + Subheading appear ONCE -->
+        {% if heading_section %}
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-secondary text-uppercase">Reliable & Secure</h6>
-            <h1 class="mb-4">Our Shipment Services</h1>
-            <p class="mb-5">
-                At <strong>Makanjiro Company Limited</strong>, established in July 2022, we are dedicated to ensuring
-                seamless, secure, and efficient shipment of Tanzania’s premier agricultural products.
-                Through our <strong>Container Freight Station (CFS)</strong> and <strong>Inland Container Depot (ICD)</strong>
-                operations, we provide world-class logistics support designed to strengthen global supply chains
-                and regional trade.
-            </p>
+            <h1 class="text-secondary text-uppercase">{{ heading_section.heading }}</h1>
+            <p class="mb-4">{{ heading_section.sub_heading|safe }}</p>
         </div>
+        {% endif %}
 
+        <!-- Service Cards -->
         <div class="row g-4">
-            <!-- Service 1 -->
+            {% for service in services %}
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item p-4 shadow-sm border rounded-3">
+                <div class="service-item p-4 shadow-sm border rounded-3 bg-white">
                     <div class="overflow-hidden mb-3">
-                        <img class="img-fluid rounded" src="{% static 'assets/img/service-1.jpg' %}" alt="Stuffing Services">
+                        <img class="img-fluid rounded uniform-img" src="{{ service.image.url }}" alt="{{ service.title }}">
                     </div>
-                    <h4 class="mb-3">Container Stuffing</h4>
-                    <p>
-                        We ensure safe and efficient container stuffing processes to maximize space utilization and
-                        safeguard goods during transportation.
-                    </p>
+                    <h4 class="mb-3">{{ service.title }}</h4>
+                    <p>{{ service.description|safe }}</p>
                 </div>
             </div>
-
-            <!-- Service 2 -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item p-4 shadow-sm border rounded-3">
-                    <div class="overflow-hidden mb-3">
-                        <img class="img-fluid rounded" src="{% static 'assets/img/service-5.jpg' %}" alt="Customs Clearance">
-                    </div>
-                    <h4 class="mb-3">Customs Clearance</h4>
-                    <p>
-                        Our team provides fast and compliant customs clearance solutions, ensuring your cargo
-                        moves smoothly across borders.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item p-4 shadow-sm border rounded-3">
-                    <div class="overflow-hidden mb-3">
-                        <img class="img-fluid rounded" src="{% static 'assets/img/service-6.jpg' %}" alt="Warehouse Solutions">
-                    </div>
-                    <h4 class="mb-3">Warehouse & Storage</h4>
-                    <p>
-                        We offer secure and modern warehousing solutions to accommodate your cargo needs
-                        before and after shipment.
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
+
     </div>
 </div>
 <!-- Shipment Intro End -->
