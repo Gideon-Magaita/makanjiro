@@ -21,5 +21,7 @@ admin.site.register([
     Value,
     Project,
     Contact,
-    Visitor
+    Visitor,
+    PriceList,
+    Shipment
 ])

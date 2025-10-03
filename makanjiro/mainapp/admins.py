@@ -1193,7 +1193,6 @@ def edit_shipment(request,id):
     return render(request,'pages/admins/edit-shipment.html',context)
 
 
-
 @login_required(login_url='login_user')
 @admin_only
 def delete_shipment(request,id):
@@ -1204,3 +1203,59 @@ def delete_shipment(request,id):
     else:
         messages.error(request,'Something went wrong!')
     return redirect('shipment')
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def add_price_list(request):
+    price = PriceList.objects.all()
+    if request.method == 'POST':
+        form = PriceListForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data added successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('add_price_list')
+    else:
+        form = PriceListForm()
+        context={
+            'form':form,
+            'price':price
+        }
+    return render(request,'pages/admins/price-list.html',context)
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def edit_add_price_list(request,pk):
+    price = PriceList.objects.get(id=pk)
+    if request.method == 'POST':
+        form = PriceListForm(request.POST or None,request.FILES or None,instance=price)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data updated successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('add_price_list')
+    else:
+        form = PriceListForm(instance=price)
+        context={
+            'form':form,
+        }
+    return render(request,'pages/admins/edit-price-list.html',context)
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def delete_add_price_list(request,pk):
+    price = PriceList.objects.get(id=pk)
+    if price:
+        price.delete()
+        messages.success(request,'Data deleted!')
+    else:
+        messages.error(request,'Something went wrong!')
+    return redirect('add_price_list')

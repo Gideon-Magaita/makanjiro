@@ -250,3 +250,13 @@ class ShipmentForm(forms.ModelForm):
             'description':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
             'image':forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
+
+class PriceListForm(forms.ModelForm):
+    class Meta:
+        model = PriceList
+        fields=['file_name','file']
+        widgets={
+            'file_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
+            'file':forms.ClearableFileInput(attrs={'class': 'form-control','accept': '.pdf,.docx,.xlsx,.xls',}),
+        }

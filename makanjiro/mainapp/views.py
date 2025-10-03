@@ -156,6 +156,12 @@ def contact(request):
     return render(request,'pages/users/contact.html',context)
 
 
+def price_list(request):
+    files = PriceList.objects.all()
+    context={
+        'files':files,
+    }
+    return render(request,'pages/users/price-list.html',context)
 
 
 

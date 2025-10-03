@@ -17,6 +17,8 @@ urlpatterns = [
     path('contact/',views.contact,name='contact'),
     path('detail_service/<int:id>',views.detail_service,name='detail_service'),
     path('shipment_view',views.shipment_view,name='shipment_view'),
+    path('price_list/',views.price_list,name='price_list'),
+
 
     #admin urls
     path('admin_home',admins.admin_home,name='admin_home'),
@@ -120,6 +122,11 @@ urlpatterns = [
     path('shipment',admins.shipment,name='shipment'),
     path('edit_shipment/<int:id>',admins.edit_shipment,name='edit_shipment'),
     path('delete_shipment/<int:id>',admins.delete_shipment,name='delete_shipment'),
+
+    path('add_price_list',admins.add_price_list,name='add_price_list'),
+    path('edit_add_price_list/<int:pk>',admins.edit_add_price_list,name='edit_add_price_list'),
+    path('delete_add_price_list/<int:pk>',admins.delete_add_price_list,name='delete_add_price_list'),
+
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
