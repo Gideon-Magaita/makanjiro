@@ -1259,3 +1259,58 @@ def delete_add_price_list(request,pk):
     else:
         messages.error(request,'Something went wrong!')
     return redirect('add_price_list')
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def address(request):
+    address = Address.objects.all()
+    if request.method == 'POST':
+        form = AddressForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data added successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('address')
+    else:
+        form = AddressForm()
+        context={
+            'form':form,
+            'address':address
+        }
+    return render(request,'pages/admins/address.html',context)
+
+
+@login_required(login_url='login_user')
+@admin_only
+def edit_address(request,pk):
+    address = Address.objects.get(id=pk)
+    if request.method == 'POST':
+        form = AddressForm(request.POST or None,request.FILES or None,instance=address)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data updated successsfully!')
+        else:
+            messages.error(request,'Something went wrong!')
+        return redirect('address')
+    else:
+        form = AddressForm(instance=address)
+        context={
+            'form':form,
+        }
+    return render(request,'pages/admins/edit-address.html',context)
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def delete_address(request,pk):
+    address = Address.objects.get(id=pk)
+    if address:
+        address.delete()
+        messages.success(request,'Data deleted!')
+    else:
+        messages.error(request,'Something went wrong!')
+    return redirect('address')

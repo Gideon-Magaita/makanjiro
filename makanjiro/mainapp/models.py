@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import FileExtensionValidator
+from django.core.validators import RegexValidator
 
 
 class Slider(models.Model):
@@ -217,6 +218,32 @@ class PriceList(models.Model):
 
     def __str__(self):
         return self.file_name if self.file_name else str(self.file)
+
+
+class Address(models.Model):
+    address_name = models.CharField(max_length=200)
+    phone_number1 = models.CharField(
+        max_length=13, 
+        validators=[
+            RegexValidator(
+                regex=r'^\+255[0-9]{9}$',
+                message="Phone number must start with +255 followed by 9 digits."
+            )
+        ]
+    )
+    phone_number2 = models.CharField(
+        max_length=13, 
+        validators=[
+            RegexValidator(
+                regex=r'^\+255[0-9]{9}$',
+                message="Phone number must start with +255 followed by 9 digits."
+            )
+        ]
+    )
+    email = models.EmailField(max_length=200)
+
+    def __str__(self):
+        return self.address_name
     
 
 #Models to count the number of visitors

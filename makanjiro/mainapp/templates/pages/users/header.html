@@ -16,7 +16,7 @@
                 <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">About</a>
                 <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/services/' %}active{% endif %}">Services</a>
                 <a href="{% url 'project' %}" class="nav-item nav-link {% if request.path == '/projects/' %}active{% endif %}">Projects</a>
-                <a href="{% url 'shipment_view' %}" class="nav-item nav-link {% if request.path == '/shipment_view/' %}active{% endif %}">Shipment</a>
+                <a href="{% url 'shipments' %}" class="nav-item nav-link {% if request.path == '/shipments/' %}active{% endif %}">Shipment</a>
                 <a href="{% url 'price_list' %}" class="nav-item nav-link {% if request.path == '/price_list/' %}active{% endif %}">Price List</a>
                 <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact</a>
             </div>

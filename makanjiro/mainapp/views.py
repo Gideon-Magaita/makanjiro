@@ -35,6 +35,8 @@ def home(request):
     points = Special_point.objects.all()
     flex = Flexibility.objects.all()
     questions = Faq.objects.all()
+    address = Address.objects.all()
+    services = Service.objects.all()
 
     if request.method == 'POST':
         form = QuoteForm(request.POST or None)
@@ -65,6 +67,8 @@ def home(request):
         'flex':flex,
         'questions':questions,
         'service':news_page,
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/home.html',context)
 
@@ -78,6 +82,8 @@ def about(request):
     org = Affiliation_org.objects.all()
     cores = Value.objects.all()
     team = Team.objects.all()
+    address = Address.objects.all()
+    services = Service.objects.all()
     context={
         'success':success,
         'misvis':misvis,
@@ -87,6 +93,8 @@ def about(request):
         'org':org,
         'cores':cores,
         'team':team,
+        'address':address,
+        'services':services,
     }
     
     bg_classes = ["bg-success", "bg-primary", "bg-warning"]
@@ -98,6 +106,8 @@ def about(request):
 
 
 def service(request):
+    address = Address.objects.all()
+    services = Service.objects.all()
     #Service pagination
     news_list = Service.objects.all().order_by('-date')  # Order by latest news first
     paginator = Paginator(news_list, 3)  # Show 3 news items per page
@@ -107,40 +117,56 @@ def service(request):
     #endservice pagination
     context = {
         'service':news_page,
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/service.html',context)
 
 
 def detail_service(request,id):
+    address = Address.objects.all()
+    services = Service.objects.all()
     ser = Service.objects.get(id=id)
     context={
         'ser':ser,
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/service-details.html',context)
 
 
 def projects(request):
+    address = Address.objects.all()
     project = Project.objects.all()
+    services = Service.objects.all()
     context = {
         'project':project,
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/projects.html',context)
 
 
 
-def shipment_view(request):
+def shipments(request):
+    address = Address.objects.all()
+    services = Service.objects.all()
     # Assuming you only have one general heading/subheading entry
     heading_section = Shipment.objects.first()
-    services = Shipment.objects.all()
+    ship = Shipment.objects.all()
     return render(request, 'pages/users/shipment.html', {
         'heading_section': heading_section,
-        'services': services
+        'ship': ship,
+        'address':address,
+        'services':services,
     })
 
 
 
 
 def contact(request):
+    address = Address.objects.all()
+    services = Service.objects.all()
     if request.method == 'POST':
         form = ContactForm(request.POST or None)
         if form.is_valid():
@@ -152,14 +178,20 @@ def contact(request):
     else:
         form = ContactForm()
     context = {
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/contact.html',context)
 
 
 def price_list(request):
+    address = Address.objects.all()
     files = PriceList.objects.all()
+    services = Service.objects.all()
     context={
         'files':files,
+        'address':address,
+        'services':services,
     }
     return render(request,'pages/users/price-list.html',context)
 

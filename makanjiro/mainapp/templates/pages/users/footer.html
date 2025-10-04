@@ -2,12 +2,13 @@
     {% load static %}    
     <div class="container py-5">
             <div class="row g-5">
+                {% for a in address %}
                 <div class="col-lg-4 col-md-6">
                     <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>P.O.Box 1494, Mtwara</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+255 717318933 </p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+255 680318933</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@makanjirocfs.co.tz</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{a.address_name}}</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{a.phone_number1}}</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{a.phone_number2}}</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>i{{a.email}}</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -15,14 +16,15 @@
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                {% endfor %}
+                
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Services</h4>
-                    <a class="btn btn-link" href="{% url 'service' %}">Empty container handling service</a>
-                    <a class="btn btn-link" href="{% url 'service' %}">Stuffing Space</a>
-                    <a class="btn btn-link" href="{% url 'service' %}">Verified Gross Mass (VGM)</a>
-                    <a class="btn btn-link" href="{% url 'service' %}">Lift off/on Full Containers</a>
-                    <a class="btn btn-link" href="{% url 'service' %}">Lift off/on Empty Containers</a>
+                    {% for s in services %}
+                    <a class="btn btn-link" href="{% url 'service' %}">{{s.title}}</a>
+                    {% endfor %}
                 </div>
+                
                 <div class="col-lg-2 col-md-6">
                     <h4 class="text-light mb-4">Quick Links</h4>
                     <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
@@ -53,10 +55,4 @@
             </div>
         </div>
     </div>
-    <script>
-    // Get the current year
-    const year = new Date().getFullYear();
-
-    // Set it in the span with id "year"
-    document.getElementById("year").textContent = year;
-  </script>
+    

@@ -16,7 +16,7 @@ urlpatterns = [
     path('projects/',views.projects,name='project'),
     path('contact/',views.contact,name='contact'),
     path('detail_service/<int:id>',views.detail_service,name='detail_service'),
-    path('shipment_view',views.shipment_view,name='shipment_view'),
+    path('shipments/',views.shipments,name='shipments'),
     path('price_list/',views.price_list,name='price_list'),
 
 
@@ -126,6 +126,10 @@ urlpatterns = [
     path('add_price_list',admins.add_price_list,name='add_price_list'),
     path('edit_add_price_list/<int:pk>',admins.edit_add_price_list,name='edit_add_price_list'),
     path('delete_add_price_list/<int:pk>',admins.delete_add_price_list,name='delete_add_price_list'),
+
+    path('address',admins.address,name='address'),
+    path('edit_address/<int:pk>',admins.edit_address,name='edit_address'),
+    path('delete_address/<int:pk>',admins.delete_address,name='delete_address'),
 
 
 

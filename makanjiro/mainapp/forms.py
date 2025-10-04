@@ -260,3 +260,25 @@ class PriceListForm(forms.ModelForm):
             'file_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
             'file':forms.ClearableFileInput(attrs={'class': 'form-control','accept': '.pdf,.docx,.xlsx,.xls',}),
         }
+
+
+class AddressForm(ModelForm):
+    class Meta:
+        model = Address
+        fields=['address_name','phone_number1','phone_number2','email']
+        widgets = {
+            'address_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Address','required':'required'}),
+            'phone_number1': forms.TextInput(attrs={'class':'form-control','placeholder': 'Enter phone number (e.g., +255XXXXXXXXX)','required': 'required'
+            }),   
+            'phone_number2': forms.TextInput(attrs={'class':'form-control','placeholder': 'Enter phone number (e.g., +255XXXXXXXXX)','required': 'required'
+            }),           
+            'email':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter email','required':'required'}),
+        }
+    
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number1','phone_number2')
+        if not phone.startswith('+255'):
+            raise forms.ValidationError("Phone number must start with +255.")
+        if len(phone) != 13 or not phone[4:].isdigit():
+            raise forms.ValidationError("Phone number must contain exactly 9 digits after +255.")
+        return phone

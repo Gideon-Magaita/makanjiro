@@ -23,5 +23,6 @@ admin.site.register([
     Contact,
     Visitor,
     PriceList,
-    Shipment
+    Shipment,
+    Address
 ])
