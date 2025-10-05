@@ -244,8 +244,8 @@ class ShipmentForm(forms.ModelForm):
         fields=['heading','sub_heading','title','description','image']
 
         widgets={
-            'heading':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
-            'sub_heading':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
+            'heading':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading'}),
+            'sub_heading':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description'}),
             'title':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
             'description':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
             'image':forms.ClearableFileInput(attrs={'class': 'form-control'}),

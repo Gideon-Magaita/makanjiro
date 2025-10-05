@@ -197,8 +197,8 @@ class Contact(models.Model):
 
 
 class Shipment(models.Model):
-    heading = models.CharField(max_length=200)
-    sub_heading = RichTextField()
+    heading = models.CharField(max_length=200,blank=True,null=True)
+    sub_heading = RichTextField(blank=True,null=True)
     title = models.CharField(max_length=200)
     description = RichTextField()
     image = models.ImageField(max_length=200,upload_to='images/')
