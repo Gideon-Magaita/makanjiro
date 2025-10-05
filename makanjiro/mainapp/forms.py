@@ -258,7 +258,7 @@ class PriceListForm(forms.ModelForm):
         fields=['file_name','file']
         widgets={
             'file_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter heading','required':'required'}),
-            'file':forms.ClearableFileInput(attrs={'class': 'form-control','accept': '.pdf,.docx,.xlsx,.xls',}),
+            'file':forms.ClearableFileInput(attrs={'class': 'form-control','accept': '.pdf,.docx,.xlsx,.xls'}),
         }
 
 
